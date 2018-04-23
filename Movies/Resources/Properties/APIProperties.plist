@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>api_key</key>
+	<string>b66ffea8276ce576d60df52600822c88</string>
 	<key>urlGetImage</key>
 	<string>https://image.tmdb.org/t/p/w400/</string>
 	<key>urlGetMovies</key>

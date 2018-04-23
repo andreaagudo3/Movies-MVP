@@ -12,9 +12,14 @@ class MoviesListVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    fileprivate let moviesPresenter = MoviesPresenter(moviesService: MoviesService())
+    fileprivate var dataToDisplay = Movie()
+    
+    let cellId : String! = "movieCellIdentifier"
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
+        callService()
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -23,8 +28,16 @@ class MoviesListVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func callService() {
+        self.moviesPresenter.getMovies()
+    }
+    
     func configureView() {
+        //tableView
+        tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: cellId)
         
+        //presenter
+        moviesPresenter.attachView(self)
     }
 }
 
@@ -38,10 +51,29 @@ extension MoviesListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return
+        let movieCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellId) as! MovieCell
+        
+        movieCell.titleMovie.text = self.dataToDisplay.results[indexPath.row].title
+    
+        return movieCell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return self.dataToDisplay.results.count
+    }
+}
+
+extension MoviesListVC: MoviesView {
+    func moviesDataRecieved() {
+        
+    }
+    
+    func error() {
+        
+    }
+    
+    func setData(_ data: Movie) {
+        dataToDisplay = data
+        print("DataToDisplay: " + String(describing: dataToDisplay))
     }
 }
