@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		194BEB00208E598A00C0EA21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194BEAFF208E598A00C0EA21 /* AppDelegate.swift */; };
-		194BEB02208E598A00C0EA21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194BEB01208E598A00C0EA21 /* ViewController.swift */; };
 		194BEB05208E598A00C0EA21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194BEB03208E598A00C0EA21 /* Main.storyboard */; };
 		194BEB07208E598C00C0EA21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 194BEB06208E598C00C0EA21 /* Assets.xcassets */; };
 		194BEB0A208E598C00C0EA21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 194BEB08208E598C00C0EA21 /* LaunchScreen.storyboard */; };
 		194BEB15208E598D00C0EA21 /* MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194BEB14208E598D00C0EA21 /* MoviesTests.swift */; };
 		194BEB20208E598D00C0EA21 /* MoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194BEB1F208E598D00C0EA21 /* MoviesUITests.swift */; };
+		194BEB34208E5B1200C0EA21 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194BEB33208E5B1200C0EA21 /* Dictionary.swift */; };
+		194BEB37208E5B4100C0EA21 /* APIProperties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 194BEB36208E5B4100C0EA21 /* APIProperties.plist */; };
+		194BEB39208E5BAF00C0EA21 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 194BEB38208E5BAF00C0EA21 /* Localizable.strings */; };
+		194BEB40208E623F00C0EA21 /* MoviesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 194BEB3F208E623F00C0EA21 /* MoviesListVC.swift */; };
 		1EB756AA59D8793CF9563896 /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94C4C1AF73EB4C420519B5E /* Pods_Movies.framework */; };
 		9D075DD0ABA4F289F3E37A7D /* Pods_MoviesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4755912CDEBFE6E10DF44296 /* Pods_MoviesTests.framework */; };
 		A0FEC4877985EAEEC03A1733 /* Pods_MoviesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1BC0BFFE1E79C6398354A35 /* Pods_MoviesUITests.framework */; };
@@ -39,7 +42,6 @@
 /* Begin PBXFileReference section */
 		194BEAFC208E598A00C0EA21 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		194BEAFF208E598A00C0EA21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		194BEB01208E598A00C0EA21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		194BEB04208E598A00C0EA21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		194BEB06208E598C00C0EA21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		194BEB09208E598C00C0EA21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,6 +52,10 @@
 		194BEB1B208E598D00C0EA21 /* MoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		194BEB1F208E598D00C0EA21 /* MoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesUITests.swift; sourceTree = "<group>"; };
 		194BEB21208E598D00C0EA21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		194BEB33208E5B1200C0EA21 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		194BEB36208E5B4100C0EA21 /* APIProperties.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIProperties.plist; sourceTree = "<group>"; };
+		194BEB38208E5BAF00C0EA21 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		194BEB3F208E623F00C0EA21 /* MoviesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListVC.swift; sourceTree = "<group>"; };
 		383BBB6EDE847B7654011EFE /* Pods-MoviesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoviesUITests/Pods-MoviesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4755912CDEBFE6E10DF44296 /* Pods_MoviesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B9145993E7A9E4D3142C74C /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,12 +120,13 @@
 		194BEAFE208E598A00C0EA21 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				194BEAFF208E598A00C0EA21 /* AppDelegate.swift */,
-				194BEB01208E598A00C0EA21 /* ViewController.swift */,
-				194BEB03208E598A00C0EA21 /* Main.storyboard */,
-				194BEB06208E598C00C0EA21 /* Assets.xcassets */,
-				194BEB08208E598C00C0EA21 /* LaunchScreen.storyboard */,
+				194BEB31208E5AED00C0EA21 /* Resources */,
 				194BEB0B208E598C00C0EA21 /* Info.plist */,
+				194BEAFF208E598A00C0EA21 /* AppDelegate.swift */,
+				194BEB30208E5AE000C0EA21 /* MoviesApp */,
+				194BEB03208E598A00C0EA21 /* Main.storyboard */,
+				194BEB08208E598C00C0EA21 /* LaunchScreen.storyboard */,
+				194BEB06208E598C00C0EA21 /* Assets.xcassets */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -140,6 +147,104 @@
 				194BEB21208E598D00C0EA21 /* Info.plist */,
 			);
 			path = MoviesUITests;
+			sourceTree = "<group>";
+		};
+		194BEB2D208E5AB600C0EA21 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		194BEB2E208E5AC000C0EA21 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				194BEB3F208E623F00C0EA21 /* MoviesListVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		194BEB2F208E5AC600C0EA21 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		194BEB30208E5AE000C0EA21 /* MoviesApp */ = {
+			isa = PBXGroup;
+			children = (
+				194BEB3B208E613D00C0EA21 /* Favorites */,
+				194BEB3A208E612A00C0EA21 /* MoviesList */,
+			);
+			path = MoviesApp;
+			sourceTree = "<group>";
+		};
+		194BEB31208E5AED00C0EA21 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				194BEB35208E5B2900C0EA21 /* Properties */,
+				194BEB32208E5AF700C0EA21 /* Extensions */,
+				194BEB38208E5BAF00C0EA21 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		194BEB32208E5AF700C0EA21 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				194BEB33208E5B1200C0EA21 /* Dictionary.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		194BEB35208E5B2900C0EA21 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				194BEB36208E5B4100C0EA21 /* APIProperties.plist */,
+			);
+			path = Properties;
+			sourceTree = "<group>";
+		};
+		194BEB3A208E612A00C0EA21 /* MoviesList */ = {
+			isa = PBXGroup;
+			children = (
+				194BEB2F208E5AC600C0EA21 /* Model */,
+				194BEB2E208E5AC000C0EA21 /* View */,
+				194BEB2D208E5AB600C0EA21 /* Presenter */,
+			);
+			path = MoviesList;
+			sourceTree = "<group>";
+		};
+		194BEB3B208E613D00C0EA21 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				194BEB3E208E619500C0EA21 /* Model */,
+				194BEB3D208E619100C0EA21 /* View */,
+				194BEB3C208E618B00C0EA21 /* Presenter */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		194BEB3C208E618B00C0EA21 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		194BEB3D208E619100C0EA21 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		194BEB3E208E619500C0EA21 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D8E6E19E4401FDE0E5CA4F38 /* Pods */ = {
@@ -272,6 +377,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				194BEB39208E5BAF00C0EA21 /* Localizable.strings in Resources */,
+				194BEB37208E5B4100C0EA21 /* APIProperties.plist in Resources */,
 				194BEB0A208E598C00C0EA21 /* LaunchScreen.storyboard in Resources */,
 				194BEB07208E598C00C0EA21 /* Assets.xcassets in Resources */,
 				194BEB05208E598A00C0EA21 /* Main.storyboard in Resources */,
@@ -356,8 +463,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				194BEB02208E598A00C0EA21 /* ViewController.swift in Sources */,
+				194BEB40208E623F00C0EA21 /* MoviesListVC.swift in Sources */,
 				194BEB00208E598A00C0EA21 /* AppDelegate.swift in Sources */,
+				194BEB34208E5B1200C0EA21 /* Dictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,7 +641,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Movies/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = AAgudo.Movies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -548,7 +659,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Movies/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = AAgudo.Movies;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -564,7 +678,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MoviesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = AAgudo.MoviesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -581,7 +699,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MoviesTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = AAgudo.MoviesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -597,7 +719,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MoviesUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = AAgudo.MoviesUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -613,7 +739,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MoviesUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = AAgudo.MoviesUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
