@@ -52,6 +52,8 @@ class MovieDetailVC: UIViewController {
         
         //image
         bkImage.addBlur()
+        frontImage.layer.borderWidth = 2
+        frontImage.layer.borderColor = UIColor.white.cgColor
         
     }
     
