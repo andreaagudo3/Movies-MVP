@@ -46,10 +46,7 @@ class MoviesPresenter {
             let result = try data()
             if ( result != nil) {
               let moviesResult = result!
-//                print("totalResultsCount: " + String(self.locationResult.totalResultsCount))
-//
-//                self.totalResultsCount = self.locationResult.totalResultsCount
-//
+
                 if moviesResult.results.count > 0 {
                     let mappedData = moviesResult
                     
@@ -57,15 +54,6 @@ class MoviesPresenter {
                     
                     print(String(describing: mappedData))
                 }
-
-//
-//                    self.south = String(self.locationFinal.bbox.south)
-//                    self.west = String(self.locationFinal.bbox.west)
-//                    self.east = String(self.locationFinal.bbox.east)
-//                    self.north = String(self.locationFinal.bbox.north)
-//
-//                    self.locationResult = CityWeather()
-//                    self.locationFinal = Geonames()
                 
                     self.moviesView?.moviesDataRecieved()
                     
@@ -77,5 +65,4 @@ class MoviesPresenter {
             print("Se ha producido un error")
         }
     }
-
 }

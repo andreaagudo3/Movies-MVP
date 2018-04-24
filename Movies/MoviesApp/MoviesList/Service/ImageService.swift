@@ -1,38 +1,42 @@
 //
-//  MoviesService.swift
+//  ImageService.swift
 //  Movies
 //
-//  Created by Andrea Agudo on 23/4/18.
+//  Created by Andrea Agudo on 24/4/18.
 //  Copyright © 2018 Andrea Agudo. All rights reserved.
 //
-
-import Foundation
 
 import Alamofire
 import ObjectMapper
 
-class MoviesService : NSObject {
+class ImageService : NSObject {
     
     var properties: NSDictionary!
     
-    // MARK: - getMovies
+    // MARK: - getImage
     
-    func getMovies(completion: @escaping (_ response: AnyObject?) -> ()){
+    func getImage(parameters : [String: String],completion: @escaping (_ response: AnyObject?) -> ()){
         
         if let path = Bundle.main.path(forResource: "APIProperties", ofType: "plist") {
             properties = NSDictionary(contentsOfFile: path)
         }
         
-        let parameters : [String: String]? = ["api_key": properties.object(forKey: "api_key") as! String]
+        var parameter2 : [String: String]? = ["maxRows": "20" as String , "startRow" : "0" as String, "lang" : "en" as String, "isNameRequired" : "true" as String, "username" : "ilgeonamessample" as String, "style": "FULL" as String]
+        
+        
+        parameter2?.merge(dict: parameters)
+        print("Parametros: " + String(describing: parameter2))
         
         Alamofire
-            .request(properties.object(forKey: "urlGetMovies") as! String, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+            .request(properties.object(forKey: "urlLocation") as! String, method: .post, parameters: parameter2, encoding: URLEncoding.default, headers: nil)
             .responseJSON{response in
                 switch response.result{
                 case .success(let value):
                     completion(value as AnyObject)
                     
                     //print(response)
+                    
+                    
                 case .failure(let error):
                     completion(error as AnyObject)
                     print("Algo ha ido mal")
@@ -58,5 +62,6 @@ class MoviesService : NSObject {
             }
             
         })
+    }
 }
-}
+

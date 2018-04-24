@@ -12,7 +12,6 @@ import ObjectMapper
 class Movie: NSObject, Mappable{
     
     var results = [Results]()
-    var totalResultsCount = 0
     
     func mapping(map: Map) {
         results <- map["results"]
@@ -38,7 +37,7 @@ class Results: NSObject, Mappable{
     func mapping(map: Map) {
         
         id <- map["id"]
-        poster <- map["poster_path"]
+        poster <- map["backdrop_path"]
         title <- map["original_title"]
     }
     

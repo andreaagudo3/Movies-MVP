@@ -15,7 +15,7 @@ class MoviesListVC: UIViewController {
     fileprivate let moviesPresenter = MoviesPresenter(moviesService: MoviesService())
     fileprivate var dataToDisplay = Movie()
     
-    let cellId : String! = "movieCellIdentifier"
+    let customCellId : String! = "customCellId"
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -34,7 +34,8 @@ class MoviesListVC: UIViewController {
     
     func configureView() {
         //tableView
-        tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: cellId)
+        tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: self.customCellId)
+        tableView.separatorStyle = .none
         
         //presenter
         moviesPresenter.attachView(self)
@@ -47,15 +48,29 @@ extension MoviesListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 200
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let movieCell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: cellId) as! MovieCell
+  
+        let cell = tableView.dequeueReusableCell(withIdentifier: customCellId) as! CustomCell
         
-        movieCell.titleMovie.text = self.dataToDisplay.results[indexPath.row].title
+        //cellView
+        cell.titleMovie.text = dataToDisplay.results[indexPath.row].title
+        
+        //getImageUrl
+        var properties: NSDictionary!
+        if let path = Bundle.main.path(forResource: "APIProperties", ofType: "plist") {
+            properties = NSDictionary(contentsOfFile: path)
+        }
+        
+        let fullUrl = (properties.object(forKey: "urlGetImage") as! String) + dataToDisplay.results[indexPath.row].poster
+        
+        if let url = URL.init(string: fullUrl) {
+            cell.imageMovie.downloadedFrom(url: url, contentMode: .scaleToFill)
+        }
     
-        return movieCell
+        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,7 +80,7 @@ extension MoviesListVC: UITableViewDelegate, UITableViewDataSource {
 
 extension MoviesListVC: MoviesView {
     func moviesDataRecieved() {
-        
+        tableView.reloadData()
     }
     
     func error() {
