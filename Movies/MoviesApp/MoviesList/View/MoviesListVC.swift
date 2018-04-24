@@ -13,9 +13,13 @@ class MoviesListVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate let moviesPresenter = MoviesPresenter(moviesService: MoviesService())
+    fileprivate let movieDetailPresenter = MovieDetailPresenter(movieDetailService: MovieDetailService())
+    
     fileprivate var dataToDisplay = Movie()
     
     let customCellId : String! = "customCellId"
+    var ids: [Int] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -44,11 +48,21 @@ class MoviesListVC: UIViewController {
         //presenter
         moviesPresenter.attachView(self)
     }
+    
+
 }
 
 extension MoviesListVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "movieDetailId") as! MovieDetailVC
         
+        controller.idMovie = ids[indexPath.row]
+        
+        self.present(controller, animated: true)
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -73,6 +87,7 @@ extension MoviesListVC: UITableViewDelegate, UITableViewDataSource {
         if let url = URL.init(string: fullUrl) {
             cell.imageMovie.downloadedFrom(url: url, contentMode: .scaleToFill)
         }
+        
     
         return cell
     }
@@ -83,6 +98,7 @@ extension MoviesListVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MoviesListVC: MoviesView {
+  
     func moviesDataRecieved() {
         tableView.reloadData()
     }
@@ -93,6 +109,11 @@ extension MoviesListVC: MoviesView {
     
     func setData(_ data: Movie) {
         dataToDisplay = data
+        
+        for movie in self.dataToDisplay.results {
+            self.ids.append(movie.id)
+        }
+    
         print("DataToDisplay: " + String(describing: dataToDisplay))
     }
 }
