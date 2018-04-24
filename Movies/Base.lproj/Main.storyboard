@@ -29,42 +29,48 @@
         <!--MoviesVC-->
         <scene sceneID="pVE-r0-hi2">
             <objects>
-                <viewController id="u7W-Sh-5Uy" userLabel="MoviesVC" customClass="MoviesListVC" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="u7W-Sh-5Uy" userLabel="MoviesVC" customClass="MoviesListVC" customModule="Movies" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eXU-He-5Sr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jn6-lz-9VH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mAP-dh-EbZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
-                                <color key="backgroundColor" red="0.19759957901554404" green="0.19759957901554404" blue="0.19759957901554404" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <tableView key="tableFooterView" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6UD-1J-b3p">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </tableView>
-                                <connections>
-                                    <outlet property="dataSource" destination="u7W-Sh-5Uy" id="8pv-IT-Uvf"/>
-                                    <outlet property="delegate" destination="u7W-Sh-5Uy" id="sVU-FL-t8D"/>
-                                </connections>
+                                <color key="backgroundColor" red="0.27351845854922274" green="0.27351845854922274" blue="0.27351845854922274" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jn6-lz-9VH" firstAttribute="trailing" secondItem="ji8-Sh-wfM" secondAttribute="trailing" id="8Ue-yv-yg5"/>
-                            <constraint firstItem="jn6-lz-9VH" firstAttribute="bottom" secondItem="ji8-Sh-wfM" secondAttribute="bottom" id="UPe-9t-Xbv"/>
-                            <constraint firstItem="jn6-lz-9VH" firstAttribute="leading" secondItem="ji8-Sh-wfM" secondAttribute="leading" id="WBg-i2-2ms"/>
-                            <constraint firstItem="jn6-lz-9VH" firstAttribute="top" secondItem="eXU-He-5Sr" secondAttribute="top" id="juI-f0-oNy"/>
+                            <constraint firstItem="mAP-dh-EbZ" firstAttribute="top" secondItem="eXU-He-5Sr" secondAttribute="top" id="0mB-87-TDS"/>
+                            <constraint firstItem="mAP-dh-EbZ" firstAttribute="bottom" secondItem="ji8-Sh-wfM" secondAttribute="bottom" id="6J3-yC-Avt"/>
+                            <constraint firstItem="mAP-dh-EbZ" firstAttribute="leading" secondItem="ji8-Sh-wfM" secondAttribute="leading" id="ait-pt-4B2"/>
+                            <constraint firstItem="mAP-dh-EbZ" firstAttribute="trailing" secondItem="ji8-Sh-wfM" secondAttribute="trailing" id="dfR-Zc-oEC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ji8-Sh-wfM"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Movies" image="list" selectedImage="list" id="Z2T-5k-Lo9"/>
                     <connections>
-                        <outlet property="tableView" destination="jn6-lz-9VH" id="F9A-Hu-hGX"/>
+                        <outlet property="tableView" destination="mAP-dh-EbZ" id="pbP-2p-Sk4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lch-gT-ru4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1045.5999999999999" y="-191.37931034482759"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8x4-3p-o3n">
+            <objects>
+                <viewController id="tIw-oY-OrP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="adX-Mh-NAm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="4Y4-3d-DBu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KG0-Hc-UZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1766" y="-190"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="UFh-CI-BdL">
@@ -74,6 +80,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="u7W-Sh-5Uy" kind="relationship" relationship="viewControllers" id="fKy-ji-XMD"/>

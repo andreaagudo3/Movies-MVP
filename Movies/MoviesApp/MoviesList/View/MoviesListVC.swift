@@ -36,7 +36,11 @@ class MoviesListVC: UIViewController {
         //tableView
         tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: self.customCellId)
         tableView.separatorStyle = .none
+        tableView.contentInset = UIEdgeInsets.zero
         
+        tableView.delegate = self
+        tableView.dataSource = self
+   
         //presenter
         moviesPresenter.attachView(self)
     }

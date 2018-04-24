@@ -107,6 +107,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1902D10F208F366B00FD8CFC /* MovieDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MovieDetail;
+			sourceTree = "<group>";
+		};
 		194BEAF3208E598A00C0EA21 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +196,7 @@
 		194BEB30208E5AE000C0EA21 /* MoviesApp */ = {
 			isa = PBXGroup;
 			children = (
+				1902D10F208F366B00FD8CFC /* MovieDetail */,
 				194BEB3B208E613D00C0EA21 /* Favorites */,
 				194BEB3A208E612A00C0EA21 /* MoviesList */,
 			);
