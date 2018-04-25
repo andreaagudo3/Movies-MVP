@@ -15,6 +15,8 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var bkImage: UIImageView!
     @IBOutlet weak var frontImage: UIImageView!
+    @IBOutlet weak var favoriteBtn: UIButton!
+    var isFavourite = false
     
     fileprivate let movieDetailPresenter = MovieDetailPresenter(movieDetailService: MovieDetailService())
     fileprivate var dataToDisplay = MovieDetail()
@@ -59,6 +61,43 @@ class MovieDetailVC: UIViewController {
     
     func callService() {
         self.movieDetailPresenter.getMovieDetail(id:idMovie)
+    
+    }
+    
+    @IBAction func favoriteBtnTapped(_ sender: Any) {
+        
+        let userdefaults = UserDefaults.standard
+        
+        let dataObject: [Favorite] = [Favorite(id: String(idMovie), title: dataToDisplay.title, image : dataToDisplay.bkImage)]
+        
+        var decodedData  = userdefaults.object(forKey: "favorites") as! Data
+        var decodedFavorites = NSKeyedUnarchiver.unarchiveObject(with: decodedData) as! [Favorite]
+        
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: dataObject)
+        
+        if self.isFavourite == true{
+            self.isFavourite = false
+            favoriteBtn.setImage(UIImage(named: "emptyStar"), for: .normal)
+            
+            
+            //let indexToRemove = favoritesArray.index(of: ["id": idMovie])
+            
+            
+        }else{
+            self.isFavourite = true
+        
+            if decodedFavorites.count != 0 {
+                decodedFavorites.append(dataObject)
+                userdefaults.set(encodedData, forKey: "favorites")
+            }else{
+                
+                userdefaults.set(encodedData, forKey: "favorites")
+            }
+            
+            userdefaults.synchronize()
+            
+            favoriteBtn.setImage(UIImage(named: "fullStar"), for: .normal)
+        }
     }
     
 }
