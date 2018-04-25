@@ -23,7 +23,8 @@ class MovieDetailVC: UIViewController {
     
     @IBOutlet weak var closeBtn: UIButton!
     var idMovie: Int! = 0
-
+    let favoritesKey: String! = "favorites"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
@@ -43,6 +44,7 @@ class MovieDetailVC: UIViewController {
     @IBAction func closeBtnAction(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    
     func configureView() {
         //button
         let image = UIImage(named: "cross")
@@ -57,6 +59,13 @@ class MovieDetailVC: UIViewController {
         frontImage.layer.borderWidth = 2
         frontImage.layer.borderColor = UIColor.white.cgColor
         
+        //favoriteBtn
+        if self.isFavourite == true {
+            self.favoriteBtn.setImage(UIImage(named: "fullStar"), for: .normal)
+        }else{
+            self.favoriteBtn.setImage(UIImage(named: "emptyStar"), for: .normal)
+        }
+        
     }
     
     func callService() {
@@ -66,35 +75,61 @@ class MovieDetailVC: UIViewController {
     
     @IBAction func favoriteBtnTapped(_ sender: Any) {
         
-        let userdefaults = UserDefaults.standard
         
-        let dataObject: [Favorite] = [Favorite(id: String(idMovie), title: dataToDisplay.title, image : dataToDisplay.bkImage)]
+        let favoriteDataToSave: Favorite = Favorite(id: String(idMovie), title: dataToDisplay.title, image : dataToDisplay.bkImage)
+        var favorites = [Favorite]()
         
-        var decodedData  = userdefaults.object(forKey: "favorites") as! Data
-        var decodedFavorites = NSKeyedUnarchiver.unarchiveObject(with: decodedData) as! [Favorite]
-        
-        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: dataObject)
+        //loadFavorites
+        if let decodedNSData = UserDefaults.standard.object(forKey: favoritesKey) as? Data {
+            if let savedFavorites = NSKeyedUnarchiver.unarchiveObject(with: decodedNSData as Data) as? [Favorite] {
+                favorites = savedFavorites
+            }
+        }
         
         if self.isFavourite == true{
             self.isFavourite = false
             favoriteBtn.setImage(UIImage(named: "emptyStar"), for: .normal)
             
+            //removeFavorite
+            var index: Int! = 0
+            for fav in favorites {
+                if fav.id == String(idMovie){
+                    favorites.remove(at: index)
+                }
+                index = index + 1
+            }
             
-            //let indexToRemove = favoritesArray.index(of: ["id": idMovie])
+            //setFavorites
+            let archivedObject = NSKeyedArchiver.archivedData(withRootObject: favorites)
+            let defaults = UserDefaults.standard
+            defaults.set(archivedObject, forKey: favoritesKey)
+            defaults.synchronize()
             
             
         }else{
             self.isFavourite = true
-        
-            if decodedFavorites.count != 0 {
-                decodedFavorites.append(dataObject)
-                userdefaults.set(encodedData, forKey: "favorites")
-            }else{
-                
-                userdefaults.set(encodedData, forKey: "favorites")
+            
+            var isRepeat: Bool! = false
+            
+            //checkRepeatFavorite
+            var index: Int! = 0
+            for fav in favorites {
+                if fav.id == String(idMovie){
+                    isRepeat = true
+                }
+                index = index + 1
             }
             
-            userdefaults.synchronize()
+            //addNewFavorite
+            
+            if isRepeat == false{
+                favorites.append(favoriteDataToSave)
+                //rememberFavorite
+                let archivedObject = NSKeyedArchiver.archivedData(withRootObject: favorites)
+                let defaults = UserDefaults.standard
+                defaults.set(archivedObject, forKey: favoritesKey)
+                defaults.synchronize()
+            }
             
             favoriteBtn.setImage(UIImage(named: "fullStar"), for: .normal)
         }

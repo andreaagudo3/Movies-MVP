@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Favorite: NSObject{
+class Favorite: NSObject, NSCoding{
     var id: String!
     var title: String!
     var image: String!
@@ -21,17 +21,21 @@ class Favorite: NSObject{
         
     }
     
-    required convenience init(coder aDecoder: NSCoder) {
-        let id = aDecoder.decodeObject(forKey: "id") as! String
-        let title = aDecoder.decodeObject(forKey: "title") as! String
-        let image = aDecoder.decodeObject(forKey: "image") as! String
+    
+    // MARK: NSCoding
+    
+    required convenience init?(coder decoder: NSCoder) {
+        guard let title = decoder.decodeObject(forKey: "title") as? String else { return nil }
+        guard let id = decoder.decodeObject(forKey: "id") as? String else { return nil }
+        guard let image = decoder.decodeObject(forKey: "image") as? String else { return nil }
+        
         self.init(id: id, title: title, image: image)
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(id, forKey: "id")
-        aCoder.encode(title, forKey: "title")
-        aCoder.encode(image, forKey: "image")
+        aCoder.encode(self.id, forKey: "id")
+        aCoder.encode(self.title, forKey: "title")
+        aCoder.encode(self.image, forKey: "image")
     }
     
 }

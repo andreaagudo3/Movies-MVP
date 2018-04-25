@@ -10,22 +10,28 @@ import UIKit
 
 class FavoritesVC: UIViewController {
 
-    
     @IBOutlet weak var tableView: UITableView!
     
-    fileprivate let moviesPresenter = MoviesPresenter(moviesService: MoviesService())
     fileprivate let movieDetailPresenter = MovieDetailPresenter(movieDetailService: MovieDetailService())
     
-    fileprivate var dataToDisplay = Movie()
+    //fileprivate var dataToDisplay = Movie()
     
     let customCellId : String! = "customCellId"
     var ids: [Int] = []
+    var idMovie: Int! = 0
+    var favorites = [Favorite]()
+    var favoritesKey = "favorites"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        getFavorites()
+        
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getFavorites()
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -34,12 +40,12 @@ class FavoritesVC: UIViewController {
     }
     
     func getFavorites() {
-        
-        let userdefaults = UserDefaults.standard
-        
-        let dataObject: [Favorite] = ["title": dataToDisplay.title, "image" : dataToDisplay.bkImage, "id": String(idMovie)]
-        
-        let favoritesArray : NSArray = userdefaults.object(forKey: "favorites") as! NSArray
+        //loadFavorites
+        if let decodedNSData = UserDefaults.standard.object(forKey: favoritesKey) as? Data {
+            if let savedFavorites = NSKeyedUnarchiver.unarchiveObject(with: decodedNSData as Data) as? [Favorite] {
+                self.favorites = savedFavorites
+            }
+        }
 
     }
     
@@ -52,8 +58,6 @@ class FavoritesVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        //presenter
-        moviesPresenter.attachView(self)
     }
     
     
@@ -66,7 +70,8 @@ extension FavoritesVC: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "movieDetailId") as! MovieDetailVC
         
-        controller.idMovie = ids[indexPath.row]
+        controller.idMovie = Int(favorites[indexPath.row].id)
+        controller.isFavourite = true
         
         self.present(controller, animated: true)
         
@@ -81,7 +86,7 @@ extension FavoritesVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: customCellId) as! CustomCell
         
         //cellView
-        cell.titleMovie.text = dataToDisplay.results[indexPath.row].title
+        cell.titleMovie.text = favorites[indexPath.row].title
         
         //getImageUrl
         var properties: NSDictionary!
@@ -89,21 +94,17 @@ extension FavoritesVC: UITableViewDelegate, UITableViewDataSource {
             properties = NSDictionary(contentsOfFile: path)
         }
         
-        let fullUrl = (properties.object(forKey: "urlGetImage") as! String) + dataToDisplay.results[indexPath.row].poster
+        let fullUrl = (properties.object(forKey: "urlGetImage") as! String) + favorites[indexPath.row].image
         
         if let url = URL.init(string: fullUrl) {
             cell.imageMovie.downloadedFrom(url: url, contentMode: .scaleToFill)
         }
         
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataToDisplay.results.count
+        return self.favorites.count
     }
 }
 
-extension FavoritesVC: MoviesView {
-    
-}
