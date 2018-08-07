@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieDetailVC: UIViewController {
+final class MovieDetailVC: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -16,14 +16,15 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var bkImage: UIImageView!
     @IBOutlet weak var frontImage: UIImageView!
     @IBOutlet weak var favoriteBtn: UIButton!
-    var isFavourite = false
     
     fileprivate let movieDetailPresenter = MovieDetailPresenter(movieDetailService: MovieDetailService())
+    
+    var isFavourite = false
     fileprivate var dataToDisplay = MovieDetail()
     
     @IBOutlet weak var closeBtn: UIButton!
-    var idMovie: Int! = 0
-    let favoritesKey: String! = "favorites"
+    var idMovie = 0
+    let favoritesKey = "favorites"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,7 @@ class MovieDetailVC: UIViewController {
         self.dismiss(animated: true)
     }
     
-    func configureView() {
+    private func configureView() {
         //button
         let image = UIImage(named: "cross")
         closeBtn.setImage(image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate), for: [])
@@ -60,7 +61,7 @@ class MovieDetailVC: UIViewController {
         frontImage.layer.borderColor = UIColor.white.cgColor
         
         //favoriteBtn
-        if self.isFavourite == true {
+        if self.isFavourite {
             self.favoriteBtn.setImage(UIImage(named: "fullStar"), for: .normal)
         }else{
             self.favoriteBtn.setImage(UIImage(named: "emptyStar"), for: .normal)
@@ -68,13 +69,12 @@ class MovieDetailVC: UIViewController {
         
     }
     
-    func callService() {
+    private func callService() {
         self.movieDetailPresenter.getMovieDetail(id:idMovie)
     
     }
     
     @IBAction func favoriteBtnTapped(_ sender: Any) {
-        
         
         let favoriteDataToSave: Favorite = Favorite(id: String(idMovie), title: dataToDisplay.title, image : dataToDisplay.bkImage)
         var favorites = [Favorite]()

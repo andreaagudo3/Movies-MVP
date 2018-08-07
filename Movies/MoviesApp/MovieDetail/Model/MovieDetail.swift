@@ -11,10 +11,10 @@ import ObjectMapper
 
 class MovieDetail: NSObject, Mappable{
     
-    var frontImage : String! = ""
-    var bkImage: String! = ""
-    var overview : String! = ""
-    var title: String! = ""
+    var frontImage: String?
+    var bkImage: String?
+    var overview: String?
+    var title: String?
     
     func mapping(map: Map) {
         bkImage <- map["backdrop_path"]

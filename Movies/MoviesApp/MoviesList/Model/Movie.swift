@@ -30,9 +30,9 @@ class Movie: NSObject, Mappable{
 
 
 class Results: NSObject, Mappable{
-    var id : Int! = 0
-    var poster  : String! = ""
-    var title : String = ""
+    var id: Int!
+    var poster: String!
+    var title: String!
     
     func mapping(map: Map) {
         

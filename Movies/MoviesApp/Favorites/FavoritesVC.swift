@@ -16,9 +16,9 @@ class FavoritesVC: UIViewController {
     
     //fileprivate var dataToDisplay = Movie()
     
-    let customCellId : String! = "customCellId"
-    var ids: [Int] = []
-    var idMovie: Int! = 0
+    let customCellId = "customCellId"
+    var ids = [Int]()
+    var idMovie = 0
     var favorites = [Favorite]()
     var favoritesKey = "favorites"
     

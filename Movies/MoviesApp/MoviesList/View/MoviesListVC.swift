@@ -17,8 +17,8 @@ class MoviesListVC: UIViewController {
     
     fileprivate var dataToDisplay = Movie()
     
-    let customCellId : String! = "customCellId"
-    var ids: [Int] = []
+    let customCellId = "customCellId"
+    var ids = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +32,11 @@ class MoviesListVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func callService() {
+    private func callService() {
         self.moviesPresenter.getMovies()
     }
     
-    func configureView() {
+    private func configureView() {
         //tableView
         tableView.register(UINib(nibName: "CustomCell", bundle: nil), forCellReuseIdentifier: self.customCellId)
         tableView.separatorStyle = .none
